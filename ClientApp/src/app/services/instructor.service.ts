@@ -17,15 +17,15 @@ export class InstructorService {
     return this.httpClient.get<IInstructorModel>('api/instructor/' + id);
   }
 
-  public addInstructor(instructor: IInstructorModel): Observable<void> {
-    return this.httpClient.post<void>('api/instructor', instructor);
+  public addInstructor(instructor: IInstructorModel): Observable<any> {
+    return this.httpClient.post<any>('api/instructor', instructor);
   }
 
-  public updateInstructor(instructor: IInstructorModel): Observable<void> {
-    return this.httpClient.put<void>('api/instructor', instructor);
+  public updateInstructor(instructor: IInstructorModel): Observable<any> {
+    return this.httpClient.put<any>('api/instructor', instructor);
   }
 
-  public deleteInstructor(id: string): Observable<void> {
-    return this.httpClient.delete<void>('api/instructor/' + id);
+  public deleteInstructor(id: string): Observable<any> {
+    return this.httpClient.delete<any>('api/instructor/' + id);
   }
 }

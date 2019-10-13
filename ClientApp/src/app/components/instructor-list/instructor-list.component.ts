@@ -21,26 +21,6 @@ export class InstructorListComponent implements OnInit {
     this.instructors$ = this.instructorService.getInstructors();
   }
 
-  /*public edit(instructor: IInstructorModel): void {
-    const copy: IInstructorModel = { ...instructor };
-    this.modalService.open({
-      component: InstructorFormComponent,
-      context: {
-        instructor: copy,
-        save: () => {
-          this.instructorService.updateInstructor(copy)
-            .subscribe(() => {
-              this.instructors$ = this.instructorService.getInstructors();
-            });
-          this.modalService.close();
-        },
-        close: () => {
-          this.modalService.close();
-        }
-      }
-    });
-  }*/
-
   public deleteInstructor(id: string): void {
     this.instructorService.deleteInstructor(id).subscribe(() => {
       this.instructors$ = this.instructorService.getInstructors();

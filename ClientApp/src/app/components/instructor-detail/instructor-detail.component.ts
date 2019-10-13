@@ -38,15 +38,14 @@ export class InstructorFormComponent {
 
   public submitForm(form: NgForm): void {
     if (form.valid) {
-      const observable: Observable<void> = this.editing
+      const observable: Observable<any> = this.editing
         ? this.instructorService.updateInstructor(this.instructor)
         : this.instructorService.addInstructor(this.instructor);
 
       observable
         .subscribe(() => {
           this.router.navigateByUrl('/');
-        })
-        .unsubscribe();
+        });
     }
   }
 }
