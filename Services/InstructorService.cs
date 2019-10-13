@@ -14,19 +14,22 @@ namespace LearnAngularEntitiesListApp.Services
                 {
                     Id = "1",
                     Name = "Ted",
-                    Age = 20
+                    Age = 20,
+                    Email = "ted@gmail.com"
                 },
                 new Instructor()
                 {
                     Id = "2",
                     Name = "Alice",
-                    Age = 25
+                    Age = 25,
+                    Email = "al@hotmail.com"
                 },
                 new Instructor()
                 {
                     Id = "3",
                     Name = "Bob",
-                    Age = 19
+                    Age = 19,
+                    Email = "bob@domain.com"
                 }
         };
 
@@ -70,6 +73,7 @@ namespace LearnAngularEntitiesListApp.Services
 
             existing.Name = instructor.Name;
             existing.Age = instructor.Age;
+            existing.Email = instructor.Email;
 
             return Task.CompletedTask;
         }

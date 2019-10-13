@@ -1,30 +1,33 @@
-<div class="bg-primary text-white p-2" [class.bg-warning]="editing">
+<div class="container-fluid">
+
+  <div class="bg-primary text-white p-2" [class.bg-warning]="editing">
     <h5>{{editing  ? "Edit" : "Create"}} instructor</h5>
+  </div>
+
+  <form novalidate #form="ngForm" (ngSubmit)="submitForm(form)">
+      <div class="form-group">
+          <label>Name</label>
+          <input class="form-control" name="name"
+                  [(ngModel)]="instructor.name" required />
+      </div>
+
+      <div class="form-group">
+          <label>Email</label>
+          <input class="form-control" name="email"
+                  [(ngModel)]="instructor.email" email required />
+      </div>
+
+      <div class="form-group">
+          <label>Age</label>
+          <input class="form-control" name="age"
+                  [(ngModel)]="instructor.age"
+                  required pattern="^[0-9\.]+$" />
+      </div>
+
+      <button type="submit" class="btn btn-primary"
+              [class.btn-warning]="editing" [disabled]="form.invalid">
+          {{editing ? "Save" : "Create"}}
+      </button>
+      <button type="reset" class="btn btn-secondary" routerLink="/">Cancel</button>
+  </form>
 </div>
-
-<form novalidate #form="ngForm" (ngSubmit)="submitForm(form)" (reset)="resetForm()">
-    <div class="form-group">
-        <label>Name</label>
-        <input class="form-control" name="name"
-                [(ngModel)]="instructor.name" required />
-    </div>
-
-    <div class="form-group">
-        <label>Email</label>
-        <input class="form-control" name="email"
-                [(ngModel)]="instructor.email" required />
-    </div>
-
-    <div class="form-group">
-        <label>Age</label>
-        <input class="form-control" name="age"
-                [(ngModel)]="instructor.age"
-                required pattern="^[0-9\.]+$" />
-    </div>
-
-    <button type="submit" class="btn btn-primary"
-            [class.btn-warning]="editing" [disabled]="form.invalid">
-        {{editing ? "Save" : "Create"}}
-    </button>
-    <button type="reset" class="btn btn-secondary" routerLink="/">Cancel</button>
-</form>

@@ -1,8 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import { InstructorService } from "src/app/services/instructor.service";
-import { Observable } from "rxjs";
-import { InstructorModel } from "src/app/models/instructor.model";
-import { ModalService } from 'src/app/shared/Modal/modal.service';
+import { Component, OnInit } from '@angular/core';
+import { InstructorService } from 'src/app/services/instructor.service';
+import { Observable } from 'rxjs';
+import { IInstructorModel } from 'src/app/models/instructor.model';
 import { InstructorFormComponent } from '../instructor-detail/instructor-detail.component';
 
 @Component({
@@ -11,26 +10,24 @@ import { InstructorFormComponent } from '../instructor-detail/instructor-detail.
   styleUrls: ['./instructor-list.component.css']
 })
 export class InstructorListComponent implements OnInit {
-  public instructors$: Observable<InstructorModel[]>;
+  public instructors$: Observable<IInstructorModel[]>;
   public displayedColumns: string[] = ['name', 'age', 'actions'];
 
   public constructor(
     private readonly instructorService: InstructorService,
-    private readonly modalService: ModalService
-    ) {}
+     ) {}
 
   public ngOnInit(): void {
     this.instructors$ = this.instructorService.getInstructors();
   }
 
-  public edit(instructor: InstructorModel): void {
-    const copy: InstructorModel = { ...instructor };
+  /*public edit(instructor: IInstructorModel): void {
+    const copy: IInstructorModel = { ...instructor };
     this.modalService.open({
       component: InstructorFormComponent,
       context: {
         instructor: copy,
         save: () => {
-          debugger;
           this.instructorService.updateInstructor(copy)
             .subscribe(() => {
               this.instructors$ = this.instructorService.getInstructors();
@@ -42,7 +39,7 @@ export class InstructorListComponent implements OnInit {
         }
       }
     });
-  }
+  }*/
 
   public deleteInstructor(id: string): void {
     this.instructorService.deleteInstructor(id).subscribe(() => {
